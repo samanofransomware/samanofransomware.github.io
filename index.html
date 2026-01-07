@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SAMANOFRANSOMWARE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    background: black;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BIG SAMAN TEXT */
+#main-saman {
+    position: absolute;
+    top: 40%;
+    right: -100%;
+    font-size: 15vw;
+    font-weight: 900;
+    white-space: nowrap;
+    animation: moveLeft 6s linear infinite, colorShift 3s linear infinite;
+    z-index: 2;
+}
+
+/* BACKGROUND CONTAINER */
+#bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: 100px;
+    z-index: 1;
+    opacity: 0.35;
+}
+
+/* BACKGROUND WORD */
+.bg-word {
+    font-size: 2.5vw;
+    font-weight: bold;
+    text-align: center;
+    animation: jump 1.2s ease-in-out infinite alternate,
+               colorShift 4s linear infinite;
+}
+
+/* ANIMATIONS */
+@keyframes moveLeft {
+    from {
+        right: -100%;
+    }
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes jump {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes colorShift {
+    0%   { color: red; }
+    25%  { color: cyan; }
+    50%  { color: lime; }
+    75%  { color: yellow; }
+    100% { color: magenta; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div id="bg"></div>
+
+<!-- MAIN TEXT -->
+<div id="main-saman">SAMAN</div>
+
+<script>
+const bg = document.getElementById("bg");
+
+/* CREATE BACKGROUND WORDS */
+for (let i = 0; i < 80; i++) {
+    const span = document.createElement("div");
+    span.className = "bg-word";
+    span.textContent = "saman";
+
+    /* Random animation delay */
+    span.style.animationDelay = `${Math.random() * 2}s`;
+    bg.appendChild(span);
+}
+</script>
+
+</body>
+</html>
